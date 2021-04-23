@@ -68,7 +68,7 @@ int main()
             end = clock();
             float ti = ((double)(end - start)/CLOCKS_PER_SEC);
             // printf("Element found at index :%d \n",y);
-            if(y != 1)
+            if(y != -1)
             {
                 printf("Element Found at position %d.\n", y + 1);
             }
