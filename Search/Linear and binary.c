@@ -5,7 +5,7 @@
 
 int main()
 {
-    int x, j = 0,flag, n = 10000, sort = 0, i, ch;
+    int x, j = 0,flag, n = 100, sort = 0, i, ch;
     clock_t start, end;
 
     int arr[n];
