@@ -3,38 +3,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-int binarySearch(int arr[], int l, int r, int x)
-{
-    if (r >= l)
-    {
-        int mid = l + (r - l) / 2;
-        if (arr[mid] == x)
-        {
-            return mid;
-        }
-
-        if (arr[mid] > x)
-            return binarySearch(arr, l, mid - 1, x);
-
-
-        return binarySearch(arr, mid + 1, r, x);
-    }
-
-
-    return -1;
-}
-
-int linearSearch(int arr[], int l,int n, int x)
-{
-    if (l>=n)
-        return -1;
-    if (arr[l] == x)
-    {
-        return l;
-    }
-    return linearSearch(arr, l+1,n, x);
-}
-
 int main()
 {
     int x, j = 0,flag, n = 10000, sort = 0, i, ch;
@@ -137,4 +105,36 @@ int main()
     }
 
     return 0;
+}
+
+int binarySearch(int arr[], int l, int r, int x)
+{
+    if (r >= l)
+    {
+        int mid = l + (r - l) / 2;
+        if (arr[mid] == x)
+        {
+            return mid;
+        }
+
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+
+
+        return binarySearch(arr, mid + 1, r, x);
+    }
+
+
+    return -1;
+}
+
+int linearSearch(int arr[], int l,int n, int x)
+{
+    if (l>=n)
+        return -1;
+    if (arr[l] == x)
+    {
+        return l;
+    }
+    return linearSearch(arr, l+1,n, x);
 }
