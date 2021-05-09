@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<conio.h>
+#include<time.h>
+
 int a[20][20], reach[20], n;
 void dfs (int v)
 {
@@ -16,6 +18,7 @@ void dfs (int v)
 void main ()
 {
     int i, j, count = 0;
+    clock_t start, end;
 
     printf ("\n Enter number of vertices:");
     scanf ("%d", &n);
@@ -29,7 +32,11 @@ void main ()
     for (i = 1; i <= n; i++)
         for (j = 1; j <= n; j++)
          scanf ("%d", &a[i][j]);
-        dfs (1);
+    start = clock();
+    dfs (1);
+    end = clock();
+    float ti = ((double)(end - start)/CLOCKS_PER_SEC);
+       
     printf ("\n");
     for (i = 1; i <= n; i++)
     {
@@ -40,5 +47,7 @@ void main ()
         printf ("\n Graph is connected");
     else
         printf ("\n Graph is not connected");
+    printf("\nTime taken: %f", ti);
     getch ();
 }
+
