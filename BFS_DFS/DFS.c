@@ -1,45 +1,44 @@
 #include<stdio.h>
-#include<time.h>
- 
-void DFS(int);
-int G[10][10],visited[10],n;    
- 
-void main()
+#include<conio.h>
+int a[20][20], reach[20], n;
+void dfs (int v)
 {
-    int i,j;
-     clock_t start, end;
-     
-    printf("Enter number of vertices:");
-   
-	scanf("%d",&n);
- 
-    //read the adjecency matrix
-	printf("\nEnter adjecency matrix of the graph:");
-   
-	for(i=0;i<n;i++)
-       for(j=0;j<n;j++)
-			scanf("%d",&G[i][j]);
-			
-	start = clock();
-	DFS(i);
-    end = clock();
-    float ti = ((double)(end - start)/CLOCKS_PER_SEC);
- 
-    //visited is initialized to zero
-   for(i=0;i<n;i++)
-        visited[i]=0;
- 
-    DFS(0);
-    printf("\nTime taken: %f", ti);
+    int i;
+    reach[v] = 1;
+    for (i = 1; i <= n; i++)
+    if (a[v][i] && !reach[i])
+    {
+	    printf ("\n %d->%d", v, i);
+	    dfs (i);
+    }
 }
- 
-void DFS(int i)
+
+void main ()
 {
-    int j;
-	printf("\n%d",i);
-    visited[i]=1;
-	
-	for(j=0;j<n;j++)
-       if(!visited[j]&&G[i][j]==1)
-            DFS(j);
+    int i, j, count = 0;
+
+    printf ("\n Enter number of vertices:");
+    scanf ("%d", &n);
+    for (i = 1; i <= n; i++)
+    {
+        reach[i] = 0;
+        for (j = 1; j <= n; j++)
+	    a[i][j] = 0;
+    }
+    printf ("\n Enter the adjacency matrix:\n");
+    for (i = 1; i <= n; i++)
+        for (j = 1; j <= n; j++)
+         scanf ("%d", &a[i][j]);
+        dfs (1);
+    printf ("\n");
+    for (i = 1; i <= n; i++)
+    {
+        if (reach[i])
+	    count++;
+    }
+    if (count == n)
+        printf ("\n Graph is connected");
+    else
+        printf ("\n Graph is not connected");
+    getch ();
 }
