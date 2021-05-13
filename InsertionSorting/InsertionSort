@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include <time.h>
+void recursiveInsertionSort(int arr[], int n){
+   if (n <= 1)
+      return;
+   recursiveInsertionSort( arr, n-1 );
+   int nth = arr[n-1];
+   int j = n-2;
+   while (j >= 0 && arr[j] > nth){
+      arr[j+1] = arr[j];
+      j--;
+   }
+   arr[j+1] = nth;
+}
+int main(){
+
+    int size,i,n; 
+    clock_t start, end; 
+    printf("Enter the size of the list: ");
+    scanf("%d", &n);
+    int arr[n];
+    for (i = 0; i < n; i++)
+    {
+        int no = rand() % n + 1;
+        arr[i] = no;
+
+    }
+    printf("Unsorted Array:\t");
+    for (int i=0; i < n; i++)
+          printf("%d ",arr[i]);
+    start = clock();
+    recursiveInsertionSort(arr, n);
+    end = clock();
+    float ti = ((double)(end - start)/CLOCKS_PER_SEC);
+    printf("\nSorted Array:\t");
+    for (int i=0; i < n; i++)
+       printf("%d ",arr[i]);
+
+    printf("\nTime taken: %f", ti); 
+   return 0;
+}
