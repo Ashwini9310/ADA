@@ -67,7 +67,7 @@ printf("\n Enter the starting vertex :\n");
         b[i][j]=a[i][j];
  }
 
-printf(":\npath:\n");
+printf("path:");
 bfs(v);
 
 printf("\nReachable nodes are :\n");
