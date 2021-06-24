@@ -1,0 +1,82 @@
+#include<stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int warshalls();
+
+int a[10][10], p[10][10], i,j,k,n;
+
+int main()
+{
+    clock_t start, end;
+    printf("Enter number of vertices\n");
+    scanf("%d",&n);
+
+    printf("enter adjacency matrix\n");
+    printf("\n");
+
+    for(i=1;i<=n;i++)
+    {
+        for(j=1;j<=n;j++)
+        {
+            scanf("%d",&a[i][j]);
+        }
+    }
+    start = clock();
+        warshalls();
+    end = clock();
+     float ti = ((double)(end - start)/CLOCKS_PER_SEC);
+    printf("Path Matrix");
+    printf("\n\n");
+    for(i=1;i<=n;i++)
+    {
+        for(j=1;j<=n;j++)
+        {
+            printf("%d",p[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\nTime taken: %f", ti);
+}
+
+int warshalls()
+
+{
+
+for(i=1;i<=n;i++)
+
+{
+
+for(j=1;j<=n;j++)
+
+{
+
+p[i][j]=a[i][j];
+
+}
+
+}
+
+for(k=1;k<=n;k++)
+
+{
+
+for(i=1;i<=n;i++)
+
+{
+
+for(j=1;j<=n;j++)
+
+{
+
+if((p[i][j]!=1) && (p[i][k]==1 && p[k][j]==1))
+
+p[i][j]=1;
+
+}
+
+}
+
+}
+}
+
